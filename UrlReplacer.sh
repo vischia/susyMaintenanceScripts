@@ -60,6 +60,7 @@ fi
 # If at this point we don't know what to do, ask for it
 if [ -z $ACTION ]; then
     echo "[QUES] Introduce the action [probe|substitute]"
+    echo "[INFO] Note that for <probe> the remaining parameters are ininfluent. The only action will be the creation of urllist.txt"
     read -e -p "       " -i "probe" ACTION
 fi
 
