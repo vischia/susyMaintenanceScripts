@@ -17,6 +17,9 @@ GITUSERNAME=${1}
 CERNUSERNAME=${2}
 ALREADYHAVEHEPPYREPO="true"
 ALREADYHAVECMGREPO="true"
+# SOLO AL CERN: JEI=20. Si no, 8
+JEI=8
+
 
 # Get the base heppy happiness
 scp ${CERNUSERNAME}@lxplus.cern.ch:/afs/cern.ch/user/c/cmgtools/public/sparse-checkout_80X_heppy my_sparse-checkout
@@ -91,7 +94,7 @@ git merge mmarionncern/80X_M17_Production
 
 # Compile, because yes
 cd $CMSSW_BASE/src/
-scram b -j20
+scram b -j${JEI}
 
 # Do crap with electrons
 cd $CMSSW_BASE/external/slc6_amd64_gcc530
@@ -101,7 +104,7 @@ git checkout egm_id_80X_v1
 
 # Compile, because yes
 cd $CMSSW_BASE/src
-scram b -j20
+scram b -j${JEI}
 
 echo "Congratulations. In principle this should have worked. LoL.\n"
 echo "You are now ready to process the data."
