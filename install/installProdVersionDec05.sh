@@ -79,7 +79,7 @@ scram b -j 20
 
 echo "I will now transparently add /RecoEgamma/ElectronIdentification/ to the sparse checkout file, like a boss"
 
-cat "/RecoEgamma/ElectronIdentification/" >> ${CMSSW_BASE}/src/.git/info/sparse-checkout
+echo "/RecoEgamma/ElectronIdentification/" >> ${CMSSW_BASE}/src/.git/info/sparse-checkout
 
 # Add Matthieu's repo
 cd $CMSSW_BASE/src/
