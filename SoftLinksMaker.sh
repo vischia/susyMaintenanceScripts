@@ -20,6 +20,7 @@ FOLDERIN=""
 FOLDEROUT=""
 # Base dir for data folders
 MPAFDATA="/pool/ciencias/HeppyTrees/RA7/estructura/"
+MPAFDATA=""
 
 # Example of possible values
 #FOLDERIN=/pool/ciencias/TreesDR74X/heppyTrees/v1
@@ -53,7 +54,7 @@ if [ -z $FOLDEROUT ]; then
     echo "[QUES] Introduce the name of the folder that will be placed in "
     echo "       $MPAFDATA"
     echo "       and where the soft links should be created: "
-    read -e -p "       " -i "trees_8011_July5" FOLDEROUT
+    read -e -p "       " -i "/somewhere" FOLDEROUT
 fi
 
 
