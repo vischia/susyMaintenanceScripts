@@ -84,12 +84,12 @@ echo "/RecoEgamma/ElectronIdentification/" >> ${CMSSW_BASE}/src/.git/info/sparse
 # Add Matthieu's repo
 cd $CMSSW_BASE/src/
 git remote add mmarionncern git@github.com:mmarionncern/cmg-cmssw.git
-git pull mmarionncern
+git fetch mmarionncern
 git merge mmarionncern/heppy_80X_M17_Production
 
 cd CMGTools
 git remote add mmarionncern git@github.com:mmarionncern/cmgtools-lite.git
-git pull mmarionncern
+git fetch mmarionncern
 git merge mmarionncern/80X_M17_Production
 
 # Compile, because yes
