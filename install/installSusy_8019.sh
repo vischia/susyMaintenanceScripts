@@ -65,9 +65,9 @@ git push origin -u ${CENTRALBRANCH}
 ### For now, use perizzum as central
 ### git clone -o cmg-central https://github.com/CERN-PH-CMG/cmgtools-lite.git -b 80X CMGTools
 git clone -o peruzzim git@github.com:peruzzim/cmgtools-lite.git -b ${LITEBRANCH} CMGTools
-git remote add cmg-central git@github.com:CERN-PH-CMG/cmgtools-lite.git
-
 cd CMGTools 
+
+git remote add cmg-central git@github.com:CERN-PH-CMG/cmgtools-lite.git
 
 
 # add ECOP, and check it out (first time for the branch. Then, no.)
