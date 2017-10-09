@@ -5,7 +5,7 @@ import os
 import sys 
 
 defaultModules = [
-    ["leptonJetFastReCleanerTTH_step1,leptonJetFastReCleanerTTH_step2_mc",""]
+    ["leptonJetFastReCleanerTTH_step1,leptonJetFastReCleanerTTH_step2_data",""]
     ]
 
 # this can be changed with option -I, --import
@@ -133,25 +133,24 @@ class SubmitAndCheck:
         if len(notPresent) == 0:
             print bcolors.OKGREEN+'Everything seems to be in place'+bcolors.ENDC
             print bcolors.OKGREEN+'Lets proceed with the merging'+bcolors.ENDC
+            print '${PWD}/chunkDealer.sh %s merge '%outpath
             out, err = cmd(['/bin/bash','-c','${PWD}/chunkDealer.sh %s merge '%outpath])
 
         else:
-            print bcolors.FAIL + '[W] Apparently some chunks (%d) failed and are not present. Checking in submision file to resubmit'%len(notPresent) + \
-bcolors.ENDC
+            print bcolors.FAIL + '[W] Apparently some chunks (%d) failed and are not present. Checking in submision file to resubmit'%len(notPresent) + bcolors.ENDC
             torun = []
-            sub = open(options.submitFile,'r')
+            sub = open(options.submitFile,'r').readlines()
             for notP in notPresent:
                 solved=False
-                for lin in sub.readlines():
-                    if ' '+ notP[0]+' ' not in lin        : continue
+                for lin in sub:
+                    if  notP[0] not in lin        : continue
                     if '-c %s'%notP[1] not in lin: continue
                     solved=True
                     print bcolors.BOLD + "Running..." + bcolors.ENDC
-                    print lin
                     os.system(lin)
                     break
                 if not solved:
-                    print bcolors.FAIL + 'Command for resubmitting sample' + notP[0] + 'and chunk' + notP[1] + 'not found'  + bcolors.ENDC
+                    print bcolors.FAIL + 'Command for resubmitting sample', '"'+notP[0]+'"','and chunk',notP[1],'not found'  + bcolors.ENDC
                     
 if __name__ == "__main__":
 
