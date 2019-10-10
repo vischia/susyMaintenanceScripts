@@ -6,11 +6,11 @@ PREFIX="$3"
 
 if [ "${INPUT}" == "help" ]; then
     echo "USAGE: ${0} chunksFolder [check|merge] prefix"
-    echo "Default prefix: evVarFriend"
+    echo "Default prefix: Friend"
     exit 0
 fi
 if [ "${PREFIX}" == "" ]; then
-    PREFIX="evVarFriend"
+    PREFIX="Friend"
 fi
 
 if [ "${ACTION}" == "merge" ]; then
@@ -21,6 +21,7 @@ if [ "${ACTION}" == "merge" ]; then
 fi
 
 if [ "${ACTION}" == "check" ]; then
+    echo "here"
     CMD="$PWD/friendChunkCheck.sh -z ${PREFIX} ${INPUT}"
     cd ${INPUT}
     sh ${CMD}
