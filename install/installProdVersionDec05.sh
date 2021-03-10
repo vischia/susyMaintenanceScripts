@@ -22,65 +22,65 @@ JEI=8
 
 
 # Get the base heppy happiness
-scp ${CERNUSERNAME}@lxplus.cern.ch:/afs/cern.ch/user/c/cmgtools/public/sparse-checkout_80X_heppy my_sparse-checkout
+#scp ${CERNUSERNAME}@lxplus.cern.ch:/afs/cern.ch/user/c/cmgtools/public/sparse-checkout_80X_heppy my_sparse-checkout
 
 
 export SCRAM_ARCH=slc6_amd64_gcc530
 export VO_CMS_SW_DIR=/cms/cvmfs/cms.cern.ch
 source ${VO_CMS_SW_DIR}/cmsset_default.sh
 export CMS_PATH=${VO_CMS_SW_DIR}
-scram project CMSSW_8_0_19
+#scram project CMSSW_8_0_19
 cd CMSSW_8_0_19/src/
 cmsenv
-git cms-init
-
-git remote add cmg-central https://github.com/CERN-PH-CMG/cmg-cmssw.git -f  -t heppy_80X
-
-# Get the base heppy happiness
-cp $CMSSW_BASE/src/../../my_sparse-checkout .git/info/sparse-checkout
-git checkout -b heppy_80X cmg-central/heppy_80X
-
-# Add your mirror
-git remote add origin git@github.com:${GITUSERNAME}/cmg-cmssw.git
-    
-if [ "$ALREADYHAVEHEPPYREPO"== "false" ]; then
-    # Mirror-push to it
-    git push -u origin heppy_80X
-else
-    # Push to it
-    echo "You should do: git push origin heppy_80X"
-    echo "However, better not mess with you previous branches"
-    echo "You are welcome to modify the script according to your special needs"
-    echo "Waiting 5 seconds..."
-    echo sleep 5
-fi      
-
-# Get CMGTools-lite
-git clone -o cmg-central https://github.com/CERN-PH-CMG/cmgtools-lite.git -b 80X CMGTools
-cd CMGTools
-
-git remote add origin  git@github.com:${GITUSERNAME/cmgtools-lite.git
-
-if [ "$ALREADYHAVECMGREPO"== "false" ]; then
-    # Mirror-push to it
-    git push -u origin 80X
-else
-    # Push to it
-    echo "You should do: git push origin 80X"
-    echo "However, better not mess with you previous branches"
-    echo "You are welcome to modify the script according to your special needs"
-    echo "Waiting 5 seconds..."
-    echo sleep 5
-fi
-
-# Compile, because yes.
+#git cms-init
+#
+#git remote add cmg-central https://github.com/CERN-PH-CMG/cmg-cmssw.git -f  -t heppy_80X
+#
+## Get the base heppy happiness
+#cp $CMSSW_BASE/src/../../my_sparse-checkout .git/info/sparse-checkout
+#git checkout -b heppy_80X cmg-central/heppy_80X
+#
+## Add your mirror
+#git remote add origin git@github.com:${GITUSERNAME}/cmg-cmssw.git
+#    
+#if [ "$ALREADYHAVEHEPPYREPO"== "false" ]; then
+#    # Mirror-push to it
+#    git push -u origin heppy_80X
+#else
+#    # Push to it
+#    echo "You should do: git push origin heppy_80X"
+#    echo "However, better not mess with you previous branches"
+#    echo "You are welcome to modify the script according to your special needs"
+#    echo "Waiting 5 seconds..."
+#    echo sleep 5
+#fi      
+#
+## Get CMGTools-lite
+#git clone -o cmg-central https://github.com/CERN-PH-CMG/cmgtools-lite.git -b 80X CMGTools
+#cd CMGTools
+#
+#git remote add origin  git@github.com:${GITUSERNAME/cmgtools-lite.git
+#
+#if [ "$ALREADYHAVECMGREPO"== "false" ]; then
+#    # Mirror-push to it
+#    git push -u origin 80X
+#else
+#    # Push to it
+#    echo "You should do: git push origin 80X"
+#    echo "However, better not mess with you previous branches"
+#    echo "You are welcome to modify the script according to your special needs"
+#    echo "Waiting 5 seconds..."
+#    echo sleep 5
+#fi
+#
+## Compile, because yes.
 cd $CMSSW_BASE/src
-scram b -j 20
-
-echo "I will now transparently add /RecoEgamma/ElectronIdentification/ to the sparse checkout file, like a boss"
-
-echo "/RecoEgamma/ElectronIdentification/" >> ${CMSSW_BASE}/src/.git/info/sparse-checkout
-
+#scram b -j 20
+#
+#echo "I will now transparently add /RecoEgamma/ElectronIdentification/ to the sparse checkout file, like a boss"
+#
+#echo "/RecoEgamma/ElectronIdentification/" >> ${CMSSW_BASE}/src/.git/info/sparse-checkout
+#
 # Add Matthieu's repo
 cd $CMSSW_BASE/src/
 git remote add mmarionncern git@github.com:mmarionncern/cmg-cmssw.git
