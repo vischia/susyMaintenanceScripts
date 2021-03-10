@@ -41,7 +41,7 @@ if [[ "$Z" != "0" ]]; then
     for Z in $(cmgListZombies  $FILES); do
         if test -s $Z; then # empty files have already been found
             D=${Z%%/*};
-            echo "${BASE}${D}    # zombie";
+            echo "${BASE}${D} ${Z}   # zombie";
         fi;
     done
 fi;
