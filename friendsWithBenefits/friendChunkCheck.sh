@@ -14,7 +14,7 @@ if [[ "$1" == "-z" ]]; then
 fi;
 
 what=$1
-for F in $(ls ${what}_*.chunk*.root | sed 's/\.chunk[0-9]\+//' | sort | uniq); do
+for F in $(ls ${what}*.chunk*.root | sed 's/\.chunk[0-9]\+//' | sort | uniq); do
     FILES=$(ls ${F/.root/.chunk*.root} | \
             perl -npe 's/\.chunk(\d+)\./sprintf(".%06d.",$1)/e' | \
             sort -n | \
@@ -34,7 +34,7 @@ done
 
 if [[ "$Z" != "0" ]]; then
     echo "# Testing for zombies";
-    FILES=$(ls ${what}_*.chunk*.root);
+    FILES=$(ls ${what}*.chunk*.root);
     for Z in $(cmgListZombies  $FILES); do
         if test -s $Z; then # empty files have already been found
             D=${Z%%/*};
