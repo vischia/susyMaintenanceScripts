@@ -13,13 +13,16 @@ if [[ "$1" == "-z" ]]; then
     Z=1; shift;
 fi;
 
-what=$1
+what=$2
+echo "Checkin $what"
+
 for F in $(ls ${what}*.chunk*.root | sed 's/\.chunk[0-9]\+//' | sort | uniq); do
     FILES=$(ls ${F/.root/.chunk*.root} | \
             perl -npe 's/\.chunk(\d+)\./sprintf(".%06d.",$1)/e' | \
             sort -n | \
             perl -npe 's/\.(\d+)\.root$/sprintf(".chunk%d.root",$1)/e' );
     # echo -e "\nCheck chunk files for $F"; 
+    echo $FILES
     filesimple=$(ls ${F/.root/.chunk*.root})
     filesarray=($FILES)
     NCHUNKS=$((${#filesarray[@]} - 1 ))
