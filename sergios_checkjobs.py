@@ -3,12 +3,12 @@ import ROOT as r
 import os
 
 production_paths=[
-    "fqcd_forkristijonas",
+    "OutCmsBatch_23Oct24_144619",
     #"frqcd_mc_2018_withpnet",
 ]
 
 remote_paths=[
-    "/eos/cms/store/cmst3/group/tthlep/sesanche/NanoTrees_forCMGRDF_100524_summerstudent_kistinjonas/",
+    "/eos/cms/store/group/phys_higgs/vischia/tth_run3/2024-10-23_test/",
     #"/eos/cms/store/cmst3/group/tthlep/sesanche/NanoTrees_forCMGRDF_100524_summerstudent_kistinjonas_mc/",
 ]
 
