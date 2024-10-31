@@ -3,14 +3,23 @@ import ROOT as r
 import os
 
 production_paths=[
-    "OutCmsBatch_23Oct24_144619",
+    "OutCmsBatch_25Oct24_141252",
     #"frqcd_mc_2018_withpnet",
 ]
 
 remote_paths=[
-    "/eos/cms/store/group/phys_higgs/vischia/tth_run3/2024-10-23_test/",
+    "/eos/cms/store/group/phys_higgs/vischia/tth_run3/2024-10-25_test/",
     #"/eos/cms/store/cmst3/group/tthlep/sesanche/NanoTrees_forCMGRDF_100524_summerstudent_kistinjonas_mc/",
 ]
+from sys import argv
+
+if len(argv)==3:
+    production_paths = [argv[1]]
+    remote_paths = [argv[2]]
+
+print("Production paths:", production_paths)
+print("Remote paths:", remote_paths)
+
 
 def print_is_missing(file_name, production_path):
     #print(f'{file_name} missing')
