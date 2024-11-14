@@ -12,16 +12,23 @@ remote_paths=[
 ]
 from sys import argv
 import argparse
+def list_of_strings(arg):
+    return arg.split(',')
+
 parser = argparse.ArgumentParser(
                     prog='Checkscript',
                     description='Checks things',
                     epilog='Always be awesome')
-parser.add_argument('-p', '--production_paths', type=list, default=["OutCmsBatch_25Oct24_141252"])
-parser.add_argument('-r','--remote_paths', type=list, default=["/eos/cms/store/group/phys_higgs/vischia/tth_run3/2024-10-25_test/"])
+parser.add_argument('-p', '--production_paths', type=list_of_strings, default=["OutCmsBatch_25Oct24_141252"])
+parser.add_argument('-r','--remote_paths', type=list_of_strings, default=["/eos/cms/store/group/phys_higgs/vischia/tth_run3/2024-10-25_test/"])
 parser.add_argument('-l', '--local', action='store_true', help="This is if you want to resubmit locally (correctly removes")
 parser.add_argument('-d', '--dryrun', action='store_true', help="Print paths and exit")
 parser.add_argument('-v', '--verbose', action='store_true')
 args = parser.parse_args()
+
+parser.add_argument('my_list', metavar='N', type=str, nargs='+',
+                    help='a list of strings')
+
 
 production_paths=args.production_paths
 remote_paths=args.remote_paths
